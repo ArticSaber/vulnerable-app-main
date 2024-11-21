@@ -1,0 +1,27 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div>
+        Welcome to your homepage, <span th:text="${session.user.fullName}"></span>!
+        <br />
+        <br />
+        <br />
+        <a th:href="@{http://localhost:8080/post/1/}">Take a look at your first post</a>
+        <br />
+        <br />
+        <br />
+        <a th:href="@{/posts(postId=1)}">Post a new message</a>
+        <br />
+        <br />
+        <br />
+        <br />
+        </div><a th:href="@{/logout}">Log Out</a></div>
+
+
+    </div>
+</body>
+</html>

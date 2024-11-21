@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Login</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div>
+        <form th:action="@{/login}" method="post">
+            <input name="email" placeholder="Email Address"/>
+            <input name="password" placeholder="Password"/>
+            <input type="submit" value="Login" />
+        </form>
+    </div>
+    <div>You are not logged in, please login!</div>
+    <br />
+    <br />
+    <div>
+        Don't have an account?
+        <a th:href="@{/register}">Sign Up</a>
+    </div>
+</body>
+</html>

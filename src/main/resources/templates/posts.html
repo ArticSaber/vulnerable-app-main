@@ -1,0 +1,25 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Post stuff</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div>You are not logged in, please login!</div>
+<div>
+    <ul>
+        <th:block th:each="post : ${posts}">
+            <li th:utext="${post}"/>
+        </th:block>
+    </ul>
+    <form th:action="@{/post}" method="post">
+        <input type="hidden" name="postId" th:value="${postId}"/>
+        <textarea name="text"></textarea>
+        <input type="submit" value="New Post"/>
+    </form>
+</div>
+</body>
+</html>
+
+
+

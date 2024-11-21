@@ -1,0 +1,18 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Registration page</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div>You are not logged in, please login!</div>
+<div>
+    <form th:action="@{/register}" method="post" enctype="multipart/form-data">
+        <input name="email" placeholder="Email Address"/>
+        <input name="password" placeholder="Password"/>
+        <input name="fullName" placeholder="Full Name"/>
+        <input type="submit" value="Submit Registration" />
+    </form>
+</div>
+</body>
+</html>
