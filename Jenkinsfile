@@ -40,7 +40,7 @@ stage('RunSCAAnalysisUsingSnyk') {
             }
     	}
 	   
-	stage('Kubernetes Deployment of EasyBugg Web Application') {
+	stage('Kubernetes Deployment of Vuln-App Web Application') {
 	   steps {
 	      withKubeConfig([credentialsId: 'kubelogin']) {
 		  sh('kubectl delete all --all -n devsecops')
