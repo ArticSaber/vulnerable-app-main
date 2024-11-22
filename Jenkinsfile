@@ -42,15 +42,10 @@ stage('RunSCAAnalysisUsingSnyk') {
 	   
         stage('Kubernetes Deployment of Vuln-App Web Application') {
             steps {
-                script {
-                    env.KUBECONFIG = '/home/ec2-user/.kube/config'
-                }
-                sh 'kubectl create namespace devsecops || true'
-                
-                sh 'kubectl delete all --all -n devsecops || true'
-                
-                sh 'kubectl apply -f deployment.yaml --namespace=devsecops'
-            }
+	      withKubeConfig([credentialsId: 'kubelogin']) {
+		  sh('kubectl delete all --all -n devsecops')
+		  sh ('kubectl apply -f deployment.yaml --namespace=devsecops')
+		}
         }
     }
 }
