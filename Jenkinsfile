@@ -19,7 +19,26 @@ stage('RunSCAAnalysisUsingSnyk') {
             sh 'mvn snyk:test -X -fn'
         }
     }
-}
-		
+} 
+	   stage('Build') { 
+            steps { 
+               withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
+                 script{
+                 app =  docker.build("mydevsecopsproject")
+                 }
+               }
+            }
+    }
+
+	stage('Push') {
+            steps {
+                script{
+                    docker.withRegistry('https://027423892923.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:aws-credentials') {
+                    app.push("latest")
+                    }
+                }
+            }
+    	}
+	   
   }
 }
