@@ -10,12 +10,16 @@ pipeline {
 			}
         } 
 	   
-	stage('RunSCAAnalysisUsingSnyk') {
-            steps {		
-				withCredentials([string(credentialsId: 'SNYK_TOKEN', variable: 'SNYK_TOKEN')]) {
-					sh 'mvn snyk:test -fn'
-				}
-			}
-    }		
+stage('RunSCAAnalysisUsingSnyk') {
+    steps {
+        script {
+            sh 'chmod +x mvnw'
+        }
+        withCredentials([string(credentialsId: 'SNYK_TOKEN', variable: 'SNYK_TOKEN')]) {
+            sh 'mvn snyk:test -X -fn'
+        }
+    }
+}
+		
   }
 }
